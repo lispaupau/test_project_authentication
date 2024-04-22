@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Личный Кабинет</title>
+{% endblock %}
+
+{% block content %}
+<body class="d-flex h-100 text-center text-bg-dark">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">Личный кабинет</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a href="{% url 'referral_view' user_email=user_profile.email %}">Ввести код реферала</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="px-3">
+    <p class="lead">Добро пожаловать в реферальную систему</p>
+    <p>Ваш реферальный код: {{ user_profile.referral_code }}</p>
+    {% if user_profile.activated_invite_code == 0 %}
+      <p>Вы можете ввести реферальный код</p>
+    {% else %}
+      <p>Вы уже вводили реферальный код</p>
+    {% endif %}
+    <h1>{{ user_profile.email }}</h1>
+    <p class="lead">
+      <a href="{% url 'get_referrals_view' user_email=user_profile.email %}" class="btn btn-lg btn-light fw-bold border-white bg-white">Мои рефералы</a>
+    </p>
+  </main>
+</div>
+<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+
+</body>
+
+{% endblock %}

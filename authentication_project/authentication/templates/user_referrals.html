@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Мои рефералы</title>
+{% endblock %}
+
+{% block content %}
+<body class="d-flex h-100 text-center text-bg-dark">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main class="px-3">
+        <p class="lead">Ваши рефералы:</p>
+        <ul>
+            {% for referral in referrals %}
+            <li>{{ referral.email }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+</div>
+<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+{% endblock %}
